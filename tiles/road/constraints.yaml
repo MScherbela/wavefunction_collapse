@@ -1,0 +1,68 @@
+# Each tile has four sides (north, east, south, west) and sides on neighbouring tiles must match
+# The constraints file defines the four sides of each tile
+# Mixed borders are denoted as A-B, where A is top/left and B is bottom/right
+0: # pure grass
+    borders: ["grass", "grass", "grass", "grass"]
+    weight: 10
+1: 
+    borders: ["grass", "road", "grass", "road"]
+2: 
+    borders: ["road", "grass", "road", "grass"]
+3: 
+    borders: ["road", "grass", "grass", "road"]
+4: 
+    borders: ["road", "road", "grass", "grass"]
+5: 
+    borders: ["grass", "road", "road", "grass"]
+6: 
+    borders: ["grass", "grass", "road", "road"]
+7:
+    borders: ["water", "water-grass", "grass", "water-grass"]
+8:
+    borders: ["grass-water", "water", "grass-water", "grass"]
+9:
+    borders: ["grass", "grass-water", "water", "grass-water"]  
+10:
+    borders: ["water-grass", "grass", "water-grass", "water"]
+11:
+    borders: ["water-grass", "grass", "grass", "water-grass"]
+12:
+    borders: ["grass-water", "water-grass", "grass", "grass"]
+13:
+    borders: ["grass", "grass-water", "grass-water", "grass"]
+14:
+    borders: ["grass", "grass", "water-grass", "grass-water"]
+15: # pure water
+    borders: ["water", "water", "water", "water"]
+    weight: 10
+16:
+    borders: ["grass-water", "water", "water", "grass-water"]
+17:
+    borders: ["water-grass", "grass-water", "water", "water"]
+18:
+    borders: ["water", "water-grass", "water-grass", "water"]
+19:
+    borders: ["water", "water", "grass-water", "water-grass"]
+20: # bridge
+    borders: ["water", "bridge", "water", "bridge"]
+    weight: 0.1
+21:
+    borders: ["bridge", "water", "bridge", "water"]
+    weight: 0.1
+22:
+    borders: ["road", "grass-water", "bridge", "grass-water"]
+23:
+    borders: ["water-grass", "road", "water-grass", "bridge"]
+24:
+    borders: ["bridge", "water-grass", "road", "water-grass"]
+25:
+    borders: ["grass-water", "bridge", "grass-water", "road"]
+26: # water with fish
+    borders: ["water", "water", "water", "water"]
+    weight: 0.1
+27: # grass with tree
+    borders: ["grass", "grass", "grass", "grass"]
+    weight: 5
+
+
+

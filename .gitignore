@@ -1,0 +1,3 @@
+# Default ignores
+*.pyc
+**/__pycache__
