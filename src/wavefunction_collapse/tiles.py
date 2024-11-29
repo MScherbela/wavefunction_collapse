@@ -45,9 +45,7 @@ def render_tiles(tile_map, tiles, as_numpy=False):
     blank_tile = np.ones(tile_shape, dtype=np.uint8) * 255
     tiles = np.concatenate([tiles, [blank_tile]], axis=0)
     image = tiles[tile_map]  # [width, height, tile_width, tile_height, channels]
-    image = np.swapaxes(
-        image, 1, 2
-    )  # [width, tile_width, height, tile_height, channels]
+    image = np.swapaxes(image, 1, 2)  # [width, tile_width, height, tile_height, channels]
     image = np.reshape(
         image,
         [
