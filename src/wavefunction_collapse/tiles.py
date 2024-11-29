@@ -40,7 +40,7 @@ def load_tiles(tile_directory):
     return tiles, possible_neighbours, tile_weights
 
 
-def render_tiles(tile_map, tiles):
+def render_tiles(tile_map, tiles, as_numpy=False):
     tile_shape = tiles[0].shape
     blank_tile = np.ones(tile_shape, dtype=np.uint8) * 255
     tiles = np.concatenate([tiles, [blank_tile]], axis=0)
@@ -56,4 +56,6 @@ def render_tiles(tile_map, tiles):
             image.shape[4],
         ],
     )  # [width * tile_width, height * tile_height, channels]
+    if not as_numpy:
+        image = Image.fromarray(image)
     return image

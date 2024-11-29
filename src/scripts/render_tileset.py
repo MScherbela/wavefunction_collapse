@@ -1,8 +1,7 @@
 # %%
-from wavefunction_collapse.renderer import load_tiles, render_tiles
+from wavefunction_collapse.tiles import load_tiles, render_tiles
 from wavefunction_collapse.generator import generate
 import numpy as np
-import matplotlib.pyplot as plt
 
 tiles, constraints, tile_weights = load_tiles("../../tiles/road")
 n_tiles = tiles.shape[0]
@@ -25,10 +24,5 @@ tile_map[row + col < 10] = 0
 # Generate rest of the map
 tile_map = generate(tile_map, constraints, tile_weights)
 image = render_tiles(tile_map, tiles)
-
-plt.close("all")
-fig = plt.figure(figsize=(8, 4))
-plt.imshow(image)
-plt.axis("off")
-fig.tight_layout()
-# fig.savefig("output.png", dpi=300)
+image.show()
+image.save("output.png")

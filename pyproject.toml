@@ -5,11 +5,12 @@ description = "Add your description here"
 requires-python = ">=3.10"
 dependencies = [
     "numpy",
-    "matplotlib",
     "Pillow",
-    "PyQt5",
     "PyYAML",
 ]
+
+[project.scripts]
+wfc = "wavefunction_collapse.cli:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -21,3 +22,8 @@ dev-dependencies = [
     "jupyter",
     "ipython",
 ]
+
+
+
+[tool.ruff]
+line-length = 120

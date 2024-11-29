@@ -17,9 +17,7 @@ def get_next_tile(tile_map, possible):
     n_tiles = possible.shape[2] - 1
     undecided = tile_map == n_tiles
     n_possible = possible.sum(axis=2) - 1  # -1 to exclude the undecided tile
-    idx = np.unravel_index(
-        np.argmin(n_possible + n_tiles * (1 - undecided)), n_possible.shape
-    )
+    idx = np.unravel_index(np.argmin(n_possible + n_tiles * (1 - undecided)), n_possible.shape)
     return idx
 
 
@@ -35,17 +33,21 @@ def get_possible_tiles(tile_map, padded_constraints):
     return possible
 
 
-def generate(tile_map, constraints, tile_weights):
-    map_shape = tile_map.shape
-    rows, cols = map_shape
+def generate(tile_map, constraints, tile_weights, rows=None, cols=None):
     n_tiles = constraints.shape[0]
 
-    initial_tile_map = tile_map.copy()
+    if tile_map is None:
+        if rows is None or cols is None:
+            raise ValueError("Either tile_map or both n_rows and n_cols must be provided")
+        tile_map = np.ones([rows, cols], dtype=int) * n_tiles
+    else:
+        rows, cols = tile_map.shape
+
     constraints = add_undecided_auxilliary_tile(constraints)
     possible = get_possible_tiles(tile_map, constraints)
 
     generated_tiles = []
-    backtrack_constraints = np.ones(map_shape + (n_tiles + 1,), dtype=bool)
+    backtrack_constraints = np.ones((rows, cols, n_tiles + 1), dtype=bool)
 
     while True:
         # TODO: user better data structure to keep track of undecided tiles

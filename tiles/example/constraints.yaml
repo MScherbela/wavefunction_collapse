@@ -4,10 +4,12 @@
 0: # pure grass
     borders: ["grass", "grass", "grass", "grass"]
     weight: 10
-1: 
+1: # straight road
     borders: ["grass", "road", "grass", "road"]
-2: 
+    weight: 0.5
+2: # straight road
     borders: ["road", "grass", "road", "grass"]
+    weight: 0.5
 3: 
     borders: ["road", "grass", "grass", "road"]
 4: 
